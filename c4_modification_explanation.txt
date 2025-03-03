@@ -1,0 +1,26 @@
+C4 Modification: Adding Support for the Modulus (%) Operator
+
+ What was changed?
+The original C4 compiler did not support the modulus (`%`) operator, which calculates the remainder of division.
+To add this functionality, the following changes were made:
+
+1. Lexical Analyzer (`next()`)
+   - Added support for recognizing `%` as a token.
+   - Added: `else if (tk == '%') { tk = Mod; return; }`.
+
+2. Expression Parsing (`expr()`)
+   - Ensured `%` follows the same precedence as multiplication (`*`) and division (`/`).
+   - Added: `else if (tk == Mod) { next(); ++e = PSH; expr(Inc); ++e = MOD; ty = INT; }`.
+
+3. Virtual Machine Execution (`main()`)
+   - Implemented `%` in the instruction execution loop:
+     - `else if (i == MOD) a = sp++ % a;`.
+
+ Why was this change made?
+The `%` operator is an essential arithmetic operation in C. Without it, users would need to manually compute remainders using division, which is inefficient.
+
+ Expected Behavior
+After this change, the C4 compiler should be able to process expressions like:
+x = 10 % 3;
+This will correctly store `x = 1`, as expected in standard C.
+

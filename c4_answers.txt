@@ -1,0 +1,36 @@
+C4 Compiler: Conceptual Questions
+
+1. What is the purpose of the next() function, and how does it contribute to the compilation process?
+
+The `next()` function is responsible for tokenizing the source code. It reads the input character by character
+and converts meaningful sequences into tokens (keywords, identifiers, numbers, operators). It ignores
+whitespace and comments. This function ensures that the parser receives structured input, making compilation possible.
+
+2. How does C4 handle symbol resolution (e.g., variables, functions)?
+
+C4 uses a symbol table to manage variable and function names. Each identifier is stored with metadata,
+such as its type (int, char, pointer), memory location, and whether it is global or local. During parsing,
+identifiers are checked against this table to resolve their meaning correctly.
+
+3. What are the limitations of C4 as a compiler? What features of C does it not support?
+
+C4 is a minimalist compiler and lacks many standard C features, such as:
+- No floating-point support only integers and pointers are available).
+- No structs, unions, or typedefs, making complex data structures impossible.
+- Limited error reporting, making debugging harder.
+- No compiler optimizations, leading to inefficient code.
+- Minimal standard library support (only basic system calls like `printf`, `malloc`, `free`).
+
+4. How does C4 achieve self-hosting (i.e., compiling itself)? What are the implications of this design?
+
+C4 is self-hosting, meaning it can compile its own source code. This is possible because:
+- It has a simple syntax that avoids complex C features.
+- It uses a lightweight virtual machine to execute compiled code.
+- It only requires a small subset of C to function.
+
+ Implications:
+1. Bootstrapping – Once an initial binary is created, C4 can compile itself, enabling further improvements.
+2. Portability – A self-hosting compiler can be moved to different systems.
+3. Educational Purpose** – Demonstrates how a compiler can parse, generate, and execute its own code.
+
+However, self-hosting limits C4's complexity, since it must be simple enough to process its own source code.

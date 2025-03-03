@@ -1,0 +1,10 @@
+Total lines of code (LOC): 385
+Number of functions: 10
+Function LOCs, Cyclomatic Complexity, and Nesting Levels:
+  next: 102 LOC, Complexity: 31, Max Nesting: 12
+  expr: 112 LOC, Complexity: 32, Max Nesting: 19
+  stmt: 59 LOC, Complexity: 16, Max Nesting: 19
+  main: 127 LOC, Complexity: 52, Max Nesting: 24
+Number of branches (approximate): 131
+Estimated Stack Usage (Local Variables): 93 occurrences
+Estimated Heap Usage (Dynamic Allocation): 6 occurrences
